@@ -28,7 +28,7 @@ public class OI {
         pickupButton = new JoystickButton(joystick, 1);
         pickupButton.whenPressed(new Pickup());
         fireButton = new JoystickButton(joystick, 2);
-        fireButton.whenPressed(new Fire());
+        fireButton.whenPressed(new ReleaseFlipper());
         closeClawButton = new JoystickButton(joystick, 6);
         closeClawButton.whenPressed(new CloseClaw());
         openClawButton = new JoystickButton(joystick, 5);
