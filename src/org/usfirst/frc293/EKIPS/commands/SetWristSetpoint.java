@@ -9,14 +9,14 @@ public class SetWristSetpoint extends Command {
 
     public SetWristSetpoint(double setpoint) {
         m_setpoint = setpoint;
-     //   requires(Robot.leftWrist);
+        requires(Robot.leftWrist);
         requires(Robot.rightWrist);
     }
 
     protected void initialize() {
-//        Robot.leftWrist.enable();
+        Robot.leftWrist.enable();
         Robot.rightWrist.enable();
-//        Robot.leftWrist.setSetpoint(m_setpoint);
+        Robot.leftWrist.setSetpoint(m_setpoint);
         Robot.rightWrist.setSetpoint(m_setpoint);
     }
 
@@ -24,9 +24,7 @@ public class SetWristSetpoint extends Command {
     }
 
     protected boolean isFinished() {
-//        return Robot.leftWrist.onTarget() && Robot.rightWrist.onTarget();
-    	return Robot.rightWrist.onTarget();
-    	
+        return Robot.leftWrist.onTarget() && Robot.rightWrist.onTarget();
     }
 
     protected void end() {

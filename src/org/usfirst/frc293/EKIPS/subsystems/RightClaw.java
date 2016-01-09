@@ -8,24 +8,24 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 /**
  *
  */
-public class Wrist extends PIDSubsystem {
+public class RightClaw extends PIDSubsystem {
 
   private final Talon motor;
   private final AnalogPotentiometer pot;
 
   // Initialize your subsystem here
-  public Wrist(int motorPort, int potPort, String nickname) {
-    super("wrist_"+nickname, 7.0, 0.0, 10.0);
-    motor = new Talon(motorPort);
-    pot = new AnalogPotentiometer(potPort, 1.0, 0.0);
+  public RightClaw() {
+    super("claw_r", -1.0, 0.0, -4.0);
+    motor = new Talon(8);
+    pot = new AnalogPotentiometer(4, 1.0, 0.0);
     setAbsoluteTolerance(0.2);
     getPIDController().setContinuous(false);
-	getPIDController().setSetpoint(0);
+	getPIDController().setSetpoint(-1.5707);
 	getPIDController().enable();
 
-    LiveWindow.addActuator("wrist_"+nickname, "motor", motor);
-    LiveWindow.addSensor("wrist_"+nickname, "pot", pot);
-    LiveWindow.addActuator("wrist_"+nickname, "PIDSubsystem Controller", getPIDController());
+    LiveWindow.addActuator("claw_r", "motor", motor);
+    LiveWindow.addSensor("claw_r", "pot", pot);
+    LiveWindow.addActuator("claw_r", "PIDSubsystem Controller", getPIDController());
 
   }
 

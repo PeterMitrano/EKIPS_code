@@ -6,7 +6,7 @@ import org.usfirst.frc293.EKIPS.subsystems.*;
 public class Fire extends CommandGroup {
 
     public Fire() {
-        addParallel(new OpenClaw());
+//        addParallel(new OpenClaw());
         addSequential(new LowerWrist());
         addSequential(new ReleaseFlipper());
     }
