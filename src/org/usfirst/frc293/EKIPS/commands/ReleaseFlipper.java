@@ -7,21 +7,26 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ReleaseFlipper extends Command {
 
-  public void initialize(){
-  }
+	public ReleaseFlipper() {
+		requires(Robot.flipper);
+	}
 
-  public void execute(){
-    Robot.flipper.pullTrigger();
-  }
+	public void initialize() {
+		Robot.flipper.pullTrigger();
+	}
 
-  public boolean isFinished(){
-    return true;
-  }
+	public void execute() {
+	}
 
-  public void end(){}
+	public boolean isFinished() {
+		return Robot.flipper.isFullyExtended();
+	}
 
-  public void interrupted(){
-    end();
-  }
+	public void end() {
+	}
+
+	public void interrupted() {
+		end();
+	}
 
 }

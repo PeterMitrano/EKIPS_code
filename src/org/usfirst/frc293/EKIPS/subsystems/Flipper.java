@@ -8,9 +8,11 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Flipper extends Subsystem {
 
+	private static final double EXTENDED_POSITION = 1.55;
 	private Talon motor;
 	private Servo trigger;
 	private AnalogPotentiometer pot;
@@ -35,10 +37,10 @@ public class Flipper extends Subsystem {
 	}
 
 	public void pullTrigger() {
-		trigger.set(0);
 		if (Robot.isSimulation()){
 			stop();
 		}
+		trigger.set(0);
 	}
 
 	public void setTrigger() {
@@ -46,7 +48,12 @@ public class Flipper extends Subsystem {
 	}
 
 	public boolean isReset() {
+		SmartDashboard.putNumber("flipper pot", pot.get());
 		return pot.get() <= 0;
+	}
+
+	public boolean isFullyExtended() {
+		return pot.get() >= EXTENDED_POSITION;
 	}
 
 }
