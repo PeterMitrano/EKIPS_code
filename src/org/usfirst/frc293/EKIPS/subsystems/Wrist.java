@@ -14,16 +14,18 @@ public class Wrist extends PIDSubsystem {
   private final AnalogPotentiometer pot;
 
   // Initialize your subsystem here
-  public Wrist(int motorPort, int potPort) {
-    super("Wrist", 1.0, 0.0, 0.0);
+  public Wrist(int motorPort, int potPort, String nickname) {
+    super("wrist_"+nickname, 7.0, 0.0, 10.0);
     motor = new Talon(motorPort);
     pot = new AnalogPotentiometer(potPort, 1.0, 0.0);
-
-    LiveWindow.addActuator("Wrist", "motor", motor);
-    LiveWindow.addSensor("Wrist", "pot", pot);
     setAbsoluteTolerance(0.2);
     getPIDController().setContinuous(false);
-    LiveWindow.addActuator("Wrist", "PIDSubsystem Controller", getPIDController());
+	getPIDController().setSetpoint(0);
+	getPIDController().enable();
+
+    LiveWindow.addActuator("wrist_"+nickname, "motor", motor);
+    LiveWindow.addSensor("wrist_"+nickname, "pot", pot);
+    LiveWindow.addActuator("wrist_"+nickname, "PIDSubsystem Controller", getPIDController());
 
   }
 

@@ -4,33 +4,35 @@ import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Claw extends PIDSubsystem {
-  private final Talon motor;
-  private final AnalogPotentiometer pot;
+	private final Talon motor;
+	private final AnalogPotentiometer pot;
 
-  public Claw(int motorPort, int potPort) {
-    super("claw", 1.0, 0.0, 0.0);
+	public Claw(int motorPort, int potPort, String nickname) {
+		super("claw_"+nickname, 1.0, 0.0, 4.0);
 
-    motor = new Talon(motorPort);
-    LiveWindow.addActuator("claw", "motor", motor);
+		motor = new Talon(motorPort);
+		pot = new AnalogPotentiometer(potPort, 1.0, 0.0);
+		setAbsoluteTolerance(0.2);
+		getPIDController().setContinuous(false);
+		getPIDController().setSetpoint(0);
+		getPIDController().enable();
+		
+		LiveWindow.addActuator("claw_"+nickname, "motor", motor);
+		LiveWindow.addSensor("claw_"+nickname, "pot", pot);
+		LiveWindow.addActuator("claw_"+nickname, "PIDSubsystem Controller", getPIDController());
+	}
 
-    pot = new AnalogPotentiometer(potPort, 1.0, 0.0);
-    LiveWindow.addSensor("claw", "pot", pot);
+	protected double returnPIDInput() {
+		return pot.get();
+	}
 
-    setAbsoluteTolerance(0.2);
-    getPIDController().setContinuous(false);
-    LiveWindow.addActuator("claw", "PIDSubsystem Controller", getPIDController());
-  }
+	protected void usePIDOutput(double output) {
+		motor.pidWrite(output);
+	}
 
-  public void initDefaultCommand() {
-  }
-
-  protected double returnPIDInput() {
-    return pot.get();
-  }
-
-  protected void usePIDOutput(double output) {
-    motor.pidWrite(output);
-  }
+	protected void initDefaultCommand() {
+	}
 }

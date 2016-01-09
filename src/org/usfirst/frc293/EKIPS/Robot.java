@@ -36,10 +36,10 @@ public class Robot extends IterativeRobot {
    */
   public void robotInit() {
     driveBase = new DriveBase();
-    rightWrist = new Wrist(6,2);
-    leftWrist = new Wrist(7,3);
-    rightClaw = new Claw(8,4);
-    leftClaw = new Claw(9,5);
+    rightWrist = new Wrist(6,2,"right");
+    leftWrist = new Wrist(7,3,"left");
+    rightClaw = new Claw(8,4,"right");
+    leftClaw = new Claw(9,5,"left");
     flipper = new Flipper();
     oi = new OI();
     autonomousCommand = new Auto();
@@ -50,7 +50,6 @@ public class Robot extends IterativeRobot {
    * You can use it to reset subsystems before shutting down.
    */
   public void disabledInit(){
-
   }
 
   public void disabledPeriodic() {
