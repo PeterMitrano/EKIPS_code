@@ -1,7 +1,6 @@
 package org.usfirst.frc293.EKIPS;
 
 import org.usfirst.frc293.EKIPS.commands.Auto;
-import org.usfirst.frc293.EKIPS.subsystems.Claw;
 import org.usfirst.frc293.EKIPS.subsystems.DriveBase;
 import org.usfirst.frc293.EKIPS.subsystems.Flipper;
 import org.usfirst.frc293.EKIPS.subsystems.Wrist;
@@ -24,8 +23,9 @@ public class Robot extends IterativeRobot {
 
   public static OI oi;
   public static DriveBase driveBase;
-  public static Wrist leftWrist, rightWrist;
-  public static Claw leftClaw, rightClaw;
+//  public static Wrist leftWrist;
+  public static Wrist rightWrist;
+  //public static Claw leftClaw, rightClaw;
   public static Flipper flipper;
 
 
@@ -37,9 +37,9 @@ public class Robot extends IterativeRobot {
   public void robotInit() {
     driveBase = new DriveBase();
     rightWrist = new Wrist(6,2,"right");
-    leftWrist = new Wrist(7,3,"left");
-    rightClaw = new Claw(8,4,"right");
-    leftClaw = new Claw(9,5,"left");
+//    leftWrist = new Wrist(7,3,"left");
+//    rightClaw = new Claw(8,4,"right");
+//    leftClaw = new Claw(9,5,"left");
     flipper = new Flipper();
     oi = new OI();
     autonomousCommand = new Auto();

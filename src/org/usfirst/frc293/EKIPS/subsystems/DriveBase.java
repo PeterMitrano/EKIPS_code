@@ -31,7 +31,7 @@ public class DriveBase extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
-		//setDefaultCommand(new DriveWithGamepad());
+		setDefaultCommand(new DriveWithGamepad());
 	}
 
   public void drive(Joystick gamepad){

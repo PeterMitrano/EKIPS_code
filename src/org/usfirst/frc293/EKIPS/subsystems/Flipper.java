@@ -23,7 +23,7 @@ public class Flipper extends Subsystem {
 
 	@Override
 	protected void initDefaultCommand() {
-		//setDefaultCommand(new ResetFlipper());
+		setDefaultCommand(new ResetFlipper());
 	}
 
 	public void windup() {

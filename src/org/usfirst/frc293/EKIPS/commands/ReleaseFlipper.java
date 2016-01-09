@@ -15,7 +15,7 @@ public class ReleaseFlipper extends Command {
   }
 
   public boolean isFinished(){
-    return false;
+    return true;
   }
 
   public void end(){}
