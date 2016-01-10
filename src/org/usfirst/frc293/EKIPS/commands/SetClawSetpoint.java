@@ -1,7 +1,7 @@
 package org.usfirst.frc293.EKIPS.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc293.EKIPS.Robot;
+import edu.wpi.first.wpilibj.command.Command;
 
 public class SetClawSetpoint extends Command {
 
@@ -16,7 +16,7 @@ public class SetClawSetpoint extends Command {
     protected void initialize() {
         Robot.leftClaw.enable();
         Robot.rightClaw.enable();
-        Robot.leftClaw.setSetpoint(m_setpoint);
+        Robot.leftClaw.setSetpoint(-m_setpoint);
         Robot.rightClaw.setSetpoint(m_setpoint);
     }
 

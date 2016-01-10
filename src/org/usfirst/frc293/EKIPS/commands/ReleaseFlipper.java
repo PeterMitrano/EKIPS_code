@@ -7,6 +7,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ReleaseFlipper extends Command {
 
+  public ReleaseFlipper(){
+	  requires(Robot.flipper);
+  }
+	
   public void initialize(){
   }
 
@@ -15,7 +19,7 @@ public class ReleaseFlipper extends Command {
   }
 
   public boolean isFinished(){
-    return false;
+    return Robot.flipper.fullyExtended();
   }
 
   public void end(){}

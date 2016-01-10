@@ -1,16 +1,16 @@
 package org.usfirst.frc293.EKIPS.subsystems;
 
-import org.usfirst.frc293.EKIPS.Robot;
 import org.usfirst.frc293.EKIPS.commands.ResetFlipper;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Flipper extends Subsystem {
 
+	private static final double EXTENDED_POSITION = 1.5;
 	private Talon motor;
 	private Servo trigger;
 	private AnalogPotentiometer pot;
@@ -23,7 +23,7 @@ public class Flipper extends Subsystem {
 
 	@Override
 	protected void initDefaultCommand() {
-		//setDefaultCommand(new ResetFlipper());
+		setDefaultCommand(new ResetFlipper());
 	}
 
 	public void windup() {
@@ -36,9 +36,7 @@ public class Flipper extends Subsystem {
 
 	public void pullTrigger() {
 		trigger.set(0);
-		if (Robot.isSimulation()){
-			stop();
-		}
+		stop();
 	}
 
 	public void setTrigger() {
@@ -47,6 +45,11 @@ public class Flipper extends Subsystem {
 
 	public boolean isReset() {
 		return pot.get() <= 0;
+	}
+
+	public boolean fullyExtended() {
+		SmartDashboard.putNumber("flipper pos", pot.get());
+		return pot.get() > EXTENDED_POSITION;
 	}
 
 }

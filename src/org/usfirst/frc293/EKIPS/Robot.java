@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,10 +37,10 @@ public class Robot extends IterativeRobot {
    */
   public void robotInit() {
     driveBase = new DriveBase();
-    rightWrist = new Wrist(6,2,"right");
-    leftWrist = new Wrist(7,3,"left");
-    rightClaw = new Claw(8,4,"right");
-    leftClaw = new Claw(9,5,"left");
+    rightWrist = new Wrist(6,2,"right wrist");
+    leftWrist = new Wrist(7,3,"left wrist");
+    rightClaw = new Claw(8,4,"right claw");
+    leftClaw = new Claw(9,5,"left claw");
     flipper = new Flipper();
     oi = new OI();
     autonomousCommand = new Auto();
@@ -76,6 +77,11 @@ public class Robot extends IterativeRobot {
    */
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    
+    Command c = Robot.rightClaw.getCurrentCommand();
+    if (c!=null){
+    	SmartDashboard.putData(c);
+    }
   }
 
   /**

@@ -1,7 +1,6 @@
 package org.usfirst.frc293.EKIPS;
 
 import org.usfirst.frc293.EKIPS.commands.CloseClaw;
-import org.usfirst.frc293.EKIPS.commands.Fire;
 import org.usfirst.frc293.EKIPS.commands.LowerWrist;
 import org.usfirst.frc293.EKIPS.commands.OpenClaw;
 import org.usfirst.frc293.EKIPS.commands.Pickup;
@@ -17,7 +16,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class OI {
 	public JoystickButton openClawButton;
     public JoystickButton closeClawButton;
-    public JoystickButton pickupButton;
+    public JoystickButton raiseButton;
+    public JoystickButton lowerButton;
     public JoystickButton fireButton;
     public Joystick joystick;
 
@@ -25,10 +25,12 @@ public class OI {
 
         joystick = new Joystick(0);
 
-        pickupButton = new JoystickButton(joystick, 1);
-        pickupButton.whenPressed(new Pickup());
+        raiseButton = new JoystickButton(joystick, 1);
+        raiseButton.whenPressed(new RaiseWrist());
+        lowerButton = new JoystickButton(joystick, 4);
+        lowerButton.whenPressed(new LowerWrist());
         fireButton = new JoystickButton(joystick, 2);
-        fireButton.whenPressed(new Fire());
+        fireButton.whenPressed(new ReleaseFlipper());
         closeClawButton = new JoystickButton(joystick, 6);
         closeClawButton.whenPressed(new CloseClaw());
         openClawButton = new JoystickButton(joystick, 5);
