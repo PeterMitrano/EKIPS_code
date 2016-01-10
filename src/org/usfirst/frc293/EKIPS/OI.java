@@ -1,6 +1,8 @@
 package org.usfirst.frc293.EKIPS;
 
+import org.usfirst.frc293.EKIPS.commands.CloseClaw;
 import org.usfirst.frc293.EKIPS.commands.LowerWrist;
+import org.usfirst.frc293.EKIPS.commands.OpenClaw;
 import org.usfirst.frc293.EKIPS.commands.RaiseWrist;
 import org.usfirst.frc293.EKIPS.commands.ReleaseFlipper;
 import org.usfirst.frc293.EKIPS.commands.ResetFlipper;
@@ -26,12 +28,12 @@ public class OI {
         fireButton = new JoystickButton(joystick, 2);
         fireButton.whenPressed(new ReleaseFlipper());
         closeClawButton = new JoystickButton(joystick, 6);
-//        closeClawButton.whenPressed(new CloseClaw());
+        closeClawButton.whenPressed(new CloseClaw());
         openClawButton = new JoystickButton(joystick, 5);
-//        openClawButton.whenPressed(new OpenClaw());
+        openClawButton.whenPressed(new OpenClaw());
         
-//        SmartDashboard.putData("open claw", new OpenClaw());
-//        SmartDashboard.putData("close claw", new CloseClaw());
+        SmartDashboard.putData("open claw", new OpenClaw());
+        SmartDashboard.putData("close claw", new CloseClaw());
         SmartDashboard.putData("lift claw", new RaiseWrist());
         SmartDashboard.putData("lower claw", new LowerWrist());
         SmartDashboard.putData("reset", new ResetFlipper());

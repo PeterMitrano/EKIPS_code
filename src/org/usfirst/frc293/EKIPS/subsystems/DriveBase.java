@@ -1,6 +1,5 @@
 package org.usfirst.frc293.EKIPS.subsystems;
 
-import org.usfirst.frc293.EKIPS.Robot;
 import org.usfirst.frc293.EKIPS.commands.DriveWithGamepad;
 
 import edu.wpi.first.wpilibj.AnalogInput;
